@@ -9,14 +9,14 @@ blueprint:
     
     Physical button mapping:
 
-    - Button 1: Top Left (one dot)
+    Button 1: Top Left (one dot)
 
-    - Button 2: Top Right (two dots)
+    Button 2: Top Right (two dots)
 
-    - Button 3: Bottom Left (three dots)
+    Button 3: Bottom Left (three dots)
 
-    - Button 4: Bottom Right (four dots)
-    
+    Button 4: Bottom Right (four dots)
+
   domain: automation
   author: clagob
   source_url: https://raw.githubusercontent.com/clagob/sonoff-snzb01m-zha-blueprint/refs/heads/main/blueprints/sonoff_snzb01m_zha.yaml

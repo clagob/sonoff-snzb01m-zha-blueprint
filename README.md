@@ -1,5 +1,8 @@
 # Sonoff SNZB-01M 4-in-1 ZHA Blueprint
-<figure style="margin:0 auto 1rem;"><img src="./img/snzb-01m.webp" width="300" style="max-width:300px; width:90wv; height:auto; display:block;"/><figcaption style="display:block;text-align:center">Sonoff Orb 4-in-1 Zigbee Button (SNZB-01M)</figcaption></figure>
+<figure style="margin:0 auto 1rem;">
+<figcaption style="display:block;text-align:center">Sonoff Orb 4-in-1 Zigbee Button (SNZB-01M)</figcaption>
+<img src="./img/snzb-01m.webp" width="300" style="max-width:300px; width:90wv; height:auto; display:block;"/>
+</figure>
 
 Home Assistant automation blueprint for the Sonoff SNZB-01M (Sonoff Orb 4-in-1 Zigbee Button) using ZHA. It provides single-, double-, triple-, and long-press actions for each of the four physical buttons (16 actions total), and requires native ZHA support for the device (no ZHA quirk).
 

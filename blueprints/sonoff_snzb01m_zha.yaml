@@ -1,0 +1,176 @@
+blueprint:
+  name: Sonoff SNZB-01M 4-In-1 Button (ZHA with no quirk)
+  description: >
+    ZHA blueprint for the Sonoff SNZB-01M using zha_event. 
+    Supports 4 buttons (endpoints 1-4), each providing single, double, triple and long press actions — 16 actions in total.
+
+    Uses the actual ZHA commands emitted by the SNZB-01M.
+    Requires native ZHA support for this model no ZHA quirks required.
+    
+    Physical button mapping:
+
+    - Button 1: Top Left (one dot)
+    - Button 2: Top Right (two dots)
+    - Button 3: Bottom Left (three dots)
+    - Button 4: Bottom Right (four dots)
+  domain: automation
+  author: clagob
+  source_url: https://raw.githubusercontent.com/clagob/sonoff-snzb01m-zha-blueprint/refs/heads/main/blueprints/sonoff_snzb01m_zha.yaml
+  input:
+    remote:
+      name: Sonoff SNZB-01M 4-In-1 Zigbee Smart Scene Button
+      description: Select the remote from the device list
+      selector:
+        device:
+          integration: zha
+          manufacturer: SONOFF
+          multiple: false
+    automation_mode:
+      name: Automation mode
+      description: >
+        Only one automation mode can be used for all buttons.
+        More info: Automation modes documentation 
+        https://www.home-assistant.io/docs/automation/modes/
+      default: queued
+      selector:
+        select:
+          options:
+            - queued
+            - single
+            - restart
+            - parallel
+          multiple: false
+          custom_value: false
+          sort: false
+    # Button 1
+    button1_single:
+      name: Button 1 - Single press
+      default: []
+      selector:
+        action: {}
+    button1_double:
+      name: Button 1 - Double press
+      default: []
+      selector:
+        action: {}
+    button1_triple:
+      name: Button 1 - Triple press
+      default: []
+      selector:
+        action: {}
+    button1_long:
+      name: Button 1 - Long press
+      default: []
+      selector:
+        action: {}
+    # Button 2
+    button2_single:
+      name: Button 2 - Single press
+      default: []
+      selector:
+        action: {}
+    button2_double:
+      name: Button 2 - Double press
+      default: []
+      selector:
+        action: {}
+    button2_triple:
+      name: Button 2 - Triple press
+      default: []
+      selector:
+        action: {}
+    button2_long:
+      name: Button 2 - Long press
+      default: []
+      selector:
+        action: {}
+    # Button 3
+    button3_single:
+      name: Button 3 - Single press
+      default: []
+      selector:
+        action: {}
+    button3_double:
+      name: Button 3 - Double press
+      default: []
+      selector:
+        action: {}
+    button3_triple:
+      name: Button 3 - Triple press
+      default: []
+      selector:
+        action: {}
+    button3_long:
+      name: Button 3 - Long press
+      default: []
+      selector:
+        action: {}
+    # Button 4
+    button4_single:
+      name: Button 4 - Single press
+      default: []
+      selector:
+        action: {}
+    button4_double:
+      name: Button 4 - Double press
+      default: []
+      selector:
+        action: {}
+    button4_triple:
+      name: Button 4 - Triple press
+      default: []
+      selector:
+        action: {}
+    button4_long:
+      name: Button 4 - Long press
+      default: []
+      selector:
+        action: {}
+mode: !input automation_mode
+max_exceeded: silent
+variables:
+  remote_device_id: !input remote
+trigger:
+  - platform: event
+    event_type: zha_event
+condition:
+  - condition: template
+    value_template: "{{ trigger.event.data.device_id == remote_device_id }}"
+action:
+  - variables:
+      endpoint: "{{ trigger.event.data.endpoint_id }}"
+      command: "{{ trigger.event.data.command }}"
+      cluster: "{{ trigger.event.data.cluster_id }}"
+  - choose:
+      - conditions: "{{ endpoint == 1 and cluster == 6 }}"
+        sequence: !input button1_single
+      - conditions: "{{ endpoint == 1 and cluster != 6 and command == 'double' }}"
+        sequence: !input button1_double
+      - conditions: "{{ endpoint == 1 and cluster != 6 and command == 'triple' }}"
+        sequence: !input button1_triple
+      - conditions: "{{ endpoint == 1 and cluster != 6 and command == 'stop' }}"
+        sequence: !input button1_long
+      - conditions: "{{ endpoint == 2 and cluster == 6 }}"
+        sequence: !input button2_single
+      - conditions: "{{ endpoint == 2 and cluster != 6 and command == 'double' }}"
+        sequence: !input button2_double
+      - conditions: "{{ endpoint == 2 and cluster != 6 and command == 'triple' }}"
+        sequence: !input button2_triple
+      - conditions: "{{ endpoint == 2 and cluster != 6 and command == 'stop' }}"
+        sequence: !input button2_long
+      - conditions: "{{ endpoint == 3 and cluster == 6 }}"
+        sequence: !input button3_single
+      - conditions: "{{ endpoint == 3 and cluster != 6 and command == 'double' }}"
+        sequence: !input button3_double
+      - conditions: "{{ endpoint == 3 and cluster != 6 and command == 'triple' }}"
+        sequence: !input button3_triple
+      - conditions: "{{ endpoint == 3 and cluster != 6 and command == 'stop' }}"
+        sequence: !input button3_long
+      - conditions: "{{ endpoint == 4 and cluster == 6 }}"
+        sequence: !input button4_single
+      - conditions: "{{ endpoint == 4 and cluster != 6 and command == 'double' }}"
+        sequence: !input button4_double
+      - conditions: "{{ endpoint == 4 and cluster != 6 and command == 'triple' }}"
+        sequence: !input button4_triple
+      - conditions: "{{ endpoint == 4 and cluster != 6 and command == 'stop' }}"
+        sequence: !input button4_long

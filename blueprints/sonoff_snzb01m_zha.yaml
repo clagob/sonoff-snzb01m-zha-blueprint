@@ -2,10 +2,10 @@ blueprint:
   name: Sonoff SNZB-01M 4-In-1 Button (ZHA with no quirk)
   description: >
     ZHA blueprint for the Sonoff SNZB-01M using zha_event. 
-    Supports 4 buttons (endpoints 1-4), each providing single, double, triple and long press actions — 16 actions in total.
+    Supports 4 buttons (endpoints 1-4), each providing single-, double-, triple- and long-press actions — 16 actions in total.
 
     Uses the actual ZHA commands emitted by the SNZB-01M.
-    Requires native ZHA support for this model no ZHA quirks required.
+    Requires native ZHA support for this model; no ZHA quirks required.
     
     Physical button mapping:
 

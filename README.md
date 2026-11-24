@@ -1,4 +1,7 @@
 # Sonoff SNZB-01M 4-in-1 ZHA Blueprint
+
+Updated at November 2026
+
 <figure style="margin:0 auto 1rem;">
 <figcaption style="display:block;text-align:center">Sonoff Orb 4-in-1 Zigbee Button (SNZB-01M)</figcaption>
 <img src="./img/snzb-01m.webp" width="300" style="max-width:300px; width:90wv; height:auto; display:block;"/>
@@ -17,7 +20,24 @@ Click the button below to open the blueprint import dialog in Home Assistant:
 After importing, create an automation from the blueprint, select your ZHA
 remote, and configure the actions for each button press.
 
-## Button mapping
+## Usage 
+
+### 1. Device
+
+Select the Sonoff 4-In-1 Zigbee Smart Scene Button (SNZB-01M) device to create an automation.
+
+### 2. Automation mode
+
+Only one automation mode can be used for all buttons.
+
+- queued (default)
+- single
+- restart
+- parallel
+
+More info see [Automation modes documentation](https://www.home-assistant.io/docs/automation/modes/)
+
+### 3. Button actions
 
 | Button | Physical position        |
 | ------ | ------------------------ |
@@ -26,9 +46,20 @@ remote, and configure the actions for each button press.
 | 3      | Bottom left (three dots) |
 | 4      | Bottom right (four dots) |
 
+For each button you can set the actions for the following triggers
+- single press
+- double press
+- triple press
+- long press
+
+Combined you will have 16 triggers available for your automations.
+
+Find out more on https://www.home-assistant.io/docs/automation/action/
+
 ## Author
 
 Claudio Gobetti
+
 
 ## Licence
 

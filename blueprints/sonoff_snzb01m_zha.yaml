@@ -22,7 +22,7 @@ blueprint:
   source_url: https://raw.githubusercontent.com/clagob/sonoff-snzb01m-zha-blueprint/refs/heads/main/blueprints/sonoff_snzb01m_zha.yaml
   input:
     remote:
-      name: Sonoff SNZB-01M 4-In-1 Zigbee Smart Scene Button
+      name: Sonoff 4-In-1 Zigbee Smart Scene Button (SNZB-01M)
       description: Select the remote from the device list
       selector:
         device:
